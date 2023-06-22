@@ -5,11 +5,6 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: 'https://uvapoo2db2ava2front-abxdefaria.b4a.run', 
-    // https: false,
-    // cors: false,
-    hmr: {
-        host: 'https://uvapoo2db2ava2front-abxdefaria.b4a.run', 
-    }
+    host: '0.0.0.0', 
 }
 })
