@@ -25,16 +25,16 @@ function FormPessoa(){
     return(
         <form className="form bg-primary bg-opacity-75 fs-5 p-4" onSubmit={addPessoa}>
             <label className="form-label">Id</label>
-            <input className="form-control" type="number" value={id} 
+            <input className="form-control fs-5" type="number" value={id} 
                   onChange={(e) => setId(e.target.value)}/>
             <label className="form-label">Nome</label>
-            <input className="form-control" value={nome} 
+            <input className="form-control fs-5" value={nome} 
                   onChange={(e) => setNome(e.target.value)}/>
             <label className="form-label">Telefone</label>
-            <input className="form-control" value={telefone} 
+            <input className="form-control fs-5" value={telefone} 
                   onChange={(e) => setTelefone(e.target.value)}/>
             <label className="form-label">E-Mail</label>
-            <input className="form-control" type="email" value={email} 
+            <input className="form-control fs-5" type="email" value={email} 
                   onChange={(e) => setEmail(e.target.value)}/>
             <button className="btn btn-lg btn-primary bg-black  mt-4" type="submit">Adicionar</button>
         </form>

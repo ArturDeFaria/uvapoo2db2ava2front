@@ -70,7 +70,9 @@ export function PessoaLista(){
     return(
         <main>
             <h1>Listagem de Pessoas</h1>
-            <TablePessoas/>
+            <div className='table-responsive'>
+              <TablePessoas/>
+            </div>
         </main>
     )
 }

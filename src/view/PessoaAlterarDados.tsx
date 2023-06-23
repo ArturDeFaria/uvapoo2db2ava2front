@@ -29,15 +29,15 @@ function FormPessoa(){
     <form className="form bg-primary bg-opacity-75 fs-5 p-4" onSubmit={updatePessoa}>
         
         <label className="form-label">Nome</label>
-        <input className="form-control" defaultValue={`${nome}`}    
+        <input className="form-control fs-5" defaultValue={`${nome}`}    
                 onChange={(e) => setNome(e.target.value)}/>
         <label className="form-label">Telefone</label>
-        <input className="form-control" defaultValue={`${telefone}`} 
+        <input className="form-control fs-5" defaultValue={`${telefone}`} 
                 onChange={(e) => setTelefone(e.target.value)}/>
         <label className="form-label">E-Mail</label>
-        <input className="form-control" type="email" defaultValue={`${email}`} 
+        <input className="form-control fs-5" type="email" defaultValue={`${email}`} 
                 onChange={(e) => setEmail(e.target.value)}/>
-        <button className="btn btn-primary m-2" type="submit">Adicionar</button>
+        <button className="btn btn-warning fs-5 mt-4 " type="submit">Salvar Alterações</button>
     </form>
 )
 

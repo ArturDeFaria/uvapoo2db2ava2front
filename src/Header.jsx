@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import logo_uva from "./assets/logo_uva2.png";
 export function Header(){
     return(
-        <header data-bs-theme="light">
+        <header className="sticky-top">
             <nav className="navbar navbar-expand-xl navbar-dark bg-warning">
                 <div className="container-fluid">
                 <a className="navbar-brand">
