@@ -2,11 +2,9 @@ export function Home(){
     return(
         <main>
             <h1 className="text-center pt-4">Atividade Avaliativa 2 - Frontend - Poo2 x DB2</h1>
-            <div className="box mt-4 bg-white">
+            <div className="box mt-4 bg-white text-primary">
                 <p className="text-center fs-4 font-monospace "> Express - ReactiveJS -- MySQL - REST</p>
-                <p className="text-center fs-5 font-monospace"> Spring Boot x Back4App -- Free MySQL Hosting </p>
-
-            </div>
+                <p className="text-center fs-5 font-monospace"> Spring Boot x Back4App -- Free MySQL Hosting - GitHub - Docker</p>            </div>
             <div>
             <table className="table table-striped text-center align-middle m-0">
 				<thead className="table-dark">
