@@ -9,7 +9,7 @@ export default class PessoaRepositorio{
         const resp = await this.serv.obterTodos();
         this.dados = resp.map(
             (v: any)=>
-            new Pessoa(v.ID,v.NOME,v.TELEFONE,v.EMAIL)
+            new Pessoa(v.id,v.nome,v.telefone,v.email)
         );
         return this.dados; 
     }
