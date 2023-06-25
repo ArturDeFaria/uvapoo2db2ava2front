@@ -1,8 +1,8 @@
 import axios from "axios";
-import { Pessoa } from "../model/Pessoa";
+import { Categoria } from '../model/Categoria';
 
 
-export class PessoaService{
+export class CategoriaService{
     
     
          
@@ -17,47 +17,47 @@ export class PessoaService{
 
     
 
-    obterTodos = async(): Promise<[Pessoa]> => {
+    obterTodos = async(): Promise<[Categoria]> => {
         
         
         let resp=null
         try {
-            resp = await this.local_client.get("/pessoa");
+            resp = await this.local_client.get("/categoria");
             (<HTMLInputElement>document.getElementById("backend")).value="SpringBoot"
         } catch (error) {
-            resp = await this.remote_client.get("/pessoa");
+            resp = await this.remote_client.get("/categoria");
             (<HTMLInputElement>document.getElementById("backend")).value="Express"         
         }
         return resp.data;
     }
 
-    incluir =async(p:Pessoa) => {
+    incluir =async(p:Categoria) => {
         try {
-            await this.local_client.post("/pessoa",p);
+            await this.local_client.post("/categoria",p);
             (<HTMLInputElement>document.getElementById("backend")).value="SpringBoot"
         } catch (error) {
-            await this.remote_client.post("/pessoa",p);
+            await this.remote_client.post("/categoria",p);
             (<HTMLInputElement>document.getElementById("backend")).value="Express"
         }
         
     }
 
-    alterar = async(p:Pessoa)=>{
+    alterar = async(p:Categoria)=>{
         try {
-            await this.local_client.put(`/pessoa/${p.id}`,p);
+            await this.local_client.put(`/categoria/${p.id}`,p);
             (<HTMLInputElement>document.getElementById("backend")).value="SpringBoot"
         } catch (error) {
-            await this.remote_client.put(`/pessoa/${p.id}`,p);
+            await this.remote_client.put(`/categoria/${p.id}`,p);
             (<HTMLInputElement>document.getElementById("backend")).value="Express"
         }
     }
 
     excluir = async(id: number) => {
         try {
-            await this.local_client.delete(`pessoa/${id}`);
+            await this.local_client.delete(`categoria/${id}`);
             (<HTMLInputElement>document.getElementById("backend")).value="SpringBoot"
         } catch (error) {
-            await this.remote_client.delete(`pessoa/${id}`);
+            await this.remote_client.delete(`categoria/${id}`);
             (<HTMLInputElement>document.getElementById("backend")).value="Express"
         }
     }

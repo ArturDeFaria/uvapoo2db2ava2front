@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
 import logo_uva from "./assets/logo_uva2.png";
+import { useState } from "react";
+
 export function Header(){
+    
+    const [bt, setBt] = useState("xpress");
+    const hadleClick = () =>{
+        setBt((curr)=>(curr === "xpress" ? "spring" : "xpress"))
+    };
+    
     return(
         <header className="sticky-top">
             <nav className="navbar navbar-expand-xl navbar-dark bg-warning">
@@ -30,7 +38,10 @@ export function Header(){
 									<li><Link className="dropdown-item" to="listarPessoas">Alterar</Link></li>
 									<li><Link className="dropdown-item" to="listarPessoas">Excluir</Link></li>															
 								</ul>
-						    </li>                            
+						    </li>
+                            <li className="nav-item mt-3 me-2">                                
+                                <input type="button" className="btn btn-lg btn-primary disabled" value={bt} onClick={hadleClick} id="backend"/>
+                            </li>                            
                         </ul>
                     </div>
                     

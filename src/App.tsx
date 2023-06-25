@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+
 import{
   BrowserRouter as Router,
   Routes,
@@ -11,18 +11,16 @@ import {Footer} from  "./Footer";
 import { PessoaLista } from './view/PessoaLista';
 import { PessoaDados } from './view/PessoaDados';
 import { PessoaAlterarDados } from './view/PessoaAlterarDados';
-import { createContext } from 'react';
 
-export const ThemeContext = createContext(null);
+
+
 
 
 export default function App() {
-  const [theme, setTheme] = useState("light");
-  const toggleTheme = () =>{
-    setTheme((curr)=> (curr==="light" ? "dark" : "light"));
-  }
+  
+  
   return (
-    <ThemeContext.Provider value={{theme, toggleTheme}}>
+    
       <Router>
         <Header/>
         <Routes>
@@ -34,7 +32,7 @@ export default function App() {
         <Footer/> 
 
       </Router>
-    </ThemeContext.Provider>
+    
 
   )
 }

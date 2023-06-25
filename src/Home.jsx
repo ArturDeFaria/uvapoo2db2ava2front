@@ -57,7 +57,7 @@ export function Home() {
 				<table className="table table-striped text-center align-middle m-0">
 					<thead className="table-dark">
 						<tr className="h2 ">
-							<td colspan="2">POO II - App Web</td>
+							<td colSpan="2">POO II - App Web</td>
 						</tr>
 					</thead>
 					<tbody className="table-primary fs-5">
