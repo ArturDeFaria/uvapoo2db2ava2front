@@ -20,12 +20,14 @@ function FormPessoa(){
 
     const updatePessoa = (evt: SubmitEvent) => {
         evt.preventDefault();
+        //@ts-ignore
         const p = new Pessoa(id,nome,telefone,email);
         repo.alterar(p).then(_=>{
             navegation('/listarPessoas',{ replace: true});  
         });        
     }
   return(
+    //@ts-ignore
     <form className="form bg-primary bg-opacity-75 fs-5 p-4" onSubmit={updatePessoa}>
         
         <label className="form-label">Nome</label>

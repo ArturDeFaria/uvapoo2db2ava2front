@@ -1,5 +1,5 @@
 import { PessoaService } from "../service/PessoaService";
-import { Pessoa } from "./Pessoa";
+import { Pessoa } from './Pessoa';
 
 export default class PessoaRepositorio{
     private dados: Array<Pessoa> =[];
@@ -12,6 +12,11 @@ export default class PessoaRepositorio{
             new Pessoa(v.id,v.nome,v.telefone,v.email)
         );
         return this.dados; 
+    }
+
+    obter = async(id:Number): Promise<Pessoa>=> {
+        const resp = await this.serv.obter(id);        
+        return resp; 
     }
 
     adicionar =async (p:Pessoa) => {

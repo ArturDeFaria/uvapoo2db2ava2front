@@ -31,6 +31,20 @@ export class PessoaService{
         return resp.data;
     }
 
+    obter = async(id:Number): Promise <Pessoa> => {
+        
+        
+        let resp=null
+        try {
+            resp = await this.local_client.get("/pessoa/"+id);
+            (<HTMLInputElement>document.getElementById("backend")).value="SpringBoot"
+        } catch (error) {
+            resp = await this.remote_client.get("/pessoa/"+id);
+            (<HTMLInputElement>document.getElementById("backend")).value="Express"         
+        }
+        return resp.data;
+    }
+
     incluir =async(p:Pessoa) => {
         try {
             await this.local_client.post("/pessoa",p);

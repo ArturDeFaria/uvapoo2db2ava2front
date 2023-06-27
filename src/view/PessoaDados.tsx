@@ -23,9 +23,11 @@ function FormPessoa(){
     }
 
     return(
+        //@ts-ignore
         <form className="form bg-primary bg-opacity-75 fs-5 p-4" onSubmit={addPessoa}>
             <label className="form-label">Id</label>
             <input className="form-control fs-5" type="number" value={id} 
+                  //@ts-ignore
                   onChange={(e) => setId(e.target.value)}/>
             <label className="form-label">Nome</label>
             <input className="form-control fs-5" value={nome} 

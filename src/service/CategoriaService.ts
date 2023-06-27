@@ -5,6 +5,21 @@ import { Categoria } from '../model/Categoria';
 export class CategoriaService{
     
     
+    obter = async(id:Number): Promise <Categoria> => {
+        
+        
+        let resp=null
+        try {
+            resp = await this.local_client.get("/categoria/"+id);
+            (<HTMLInputElement>document.getElementById("backend")).value="SpringBoot"
+        } catch (error) {
+            resp = await this.remote_client.get("/categoria/"+id);
+            (<HTMLInputElement>document.getElementById("backend")).value="Express"         
+        }
+        return resp.data;
+    }
+    
+    
          
     private local_client = axios.create({
         baseURL: "http://192.168.1.6:8080"       

@@ -10,7 +10,7 @@ export default class ProdutoRepo{
         const resp = await this.serv.obterTodos();
         this.dados = resp.map(
             (v: any)=>
-            new Produto(v.fornecedor_pessoa_id,v.categorias_id,v.nome,v.descricao,v.preco)
+            new Produto(v.id,v.fornecedor_pessoa_id,v.categorias_id,v.nome,v.descricao,v.preco)
         );
         return this.dados; 
     }

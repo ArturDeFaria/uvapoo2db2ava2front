@@ -1,4 +1,4 @@
-export class Fornecedor{
+export class Fornecedor  {
     pessoa_id: number | null;
     cnpj:   string;
     

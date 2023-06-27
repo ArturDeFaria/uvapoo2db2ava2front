@@ -2,24 +2,25 @@ import { useEffect, useState } from 'react';
 
 import { Link, useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
-import { Fornecedor } from '../model/Fornecedor';
-import { FornecedorService } from '../service/FornecedorService';
-import FornecedorRepo from '../model/FornecedorRepo';
+import { Produto } from '../model/Produto';
+import { ProdutoService } from '../service/ProdutoService';
+import ProdutoRepo from '../model/ProdutoRepo';
 import { Pessoa } from '../model/Pessoa';
 import PessoaRepositorio from '../model/PessoaRepositorio';
+import { Categoria } from '../model/Categoria';
+import CategoriaRepo from '../model/CategoriaRepo';
 
 
 interface linhaProps{
-    fornecedor: Fornecedor;
-    //pessoa: Pessoa;
+    produto: Produto;
 }
   
-function LinhaFornecedor(props: linhaProps){
-    const fornecedor = props.fornecedor;
+function LinhaProduto(props: linhaProps){
+    const produto = props.produto;
     //const pessoa = props.pessoa;
-    const fornecedorString:any = queryString.stringify(fornecedor);
+    const produtoString:any = queryString.stringify(produto);
 
-    const serv = new FornecedorService();
+    const serv = new ProdutoService();
     const navegate = useNavigate();
     
     const excluir = (id: number) =>{
@@ -43,28 +44,46 @@ function LinhaFornecedor(props: linhaProps){
         console.log(e);
       }
     }
+
+    //dados? com get e set?wtf?
+    const[cat,setCat] = useState(new Categoria);
+    const cRepo= new CategoriaRepo();
+
+    //função getPost
+    const getCat = async(id:number) =>{
+      try {
+        let categoria = new Categoria();
+        categoria = await cRepo.obter(id);
+        setCat(categoria);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
     useEffect(()=>{
         //@ts-ignore
-          getNome(fornecedor.pessoa_id);
+        getNome(produto.fornecedor_pessoa_id);
+        getCat(produto.categorias_id);
         },[] );
        
 
     return(
       <tr className="fs-5">
-        <td>{fornecedor.pessoa_id}</td>
-        <td>{
-            nome.nome
-          }</td>
-        <td>{fornecedor.cnpj}</td>
+        <td>{produto.id}</td>
+        <td>{produto.nome}</td>
+        <td>{produto.descricao}</td>
+        <td>{produto.preco}</td>
+        <td>{cat.nome}</td>
+        <td>{nome.nome}</td>
         <td>
-          <Link className="btn btn-warning fs-5 fs- w-100" to={`/alterarFornecedor/?${fornecedorString}`}>
+          <Link className="btn btn-warning fs-5 fs- w-100" to={`/alterarProduto/?${produtoString}`}>
             Atualizar
           </Link>
         </td>
         <td>
           <button onClick={(evt)=>{              
               //@ts-ignore 
-            excluir(fornecedor.pessoa_id);}}
+            excluir(produto.id);}}
             className="btn btn-danger fs-5 fs- w-100">
                Excluir
             </button>
@@ -73,9 +92,9 @@ function LinhaFornecedor(props: linhaProps){
     )
   }
   
-function TableFornecedores() {
-    const [dados,setDados] = useState(new Array<Fornecedor>())
-    const repo = new FornecedorRepo();  
+function TableProdutos() {
+    const [dados,setDados] = useState(new Array<Produto>())
+    const repo = new ProdutoRepo();  
     let mudou: boolean = false;
     useEffect(()=>{
         repo.obterTodos().then((x)=>setDados(x));
@@ -85,22 +104,23 @@ function TableFornecedores() {
       <table className="table table-striped">
         <thead className="table-dark bg-dark fs-4">
           <tr>
-          <th>Codigo</th><th>Nome.pessoa</th><th>CNPJ</th><th></th><th></th>
+            <th>Codigo</th><th>Nome</th><th>Descrição</th><th>Preço</th><th>Categoria</th>
+            <th>Fornecedor</th><th></th><th></th>
           </tr>
         </thead>
         <tbody className='table-primary'>
-        {dados.map(f => <LinhaFornecedor key={f.pessoa_id} fornecedor={f}/>)}
+        {dados.map(p => <LinhaProduto key={p.id} produto={p}/>)}
         </tbody>
       </table>
     );
 }
 
-export function FornecedorLista(){
+export function ProdutoLista(){
     return(
         <main>
-            <h1>Listagem de Fornecedores</h1>
+            <h1>Listagem de Produtos</h1>
             <div className='table-responsive'>
-              <TableFornecedores/>
+              <TableProdutos/>
             </div>
         </main>
     )
