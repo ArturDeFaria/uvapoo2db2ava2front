@@ -7,7 +7,7 @@ export class PessoaService{
     
          
     private local_client = axios.create({
-        baseURL: "http://mrfoo.ddns.net:30000/ava2"       
+        baseURL: "https://mrfoo.ddns.net:8443/ava2"       
     });
 
     private remote_client = axios.create({
